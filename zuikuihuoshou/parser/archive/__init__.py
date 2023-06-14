@@ -1,0 +1,16 @@
+from zuikuihuoshou.parser.archive.ace import AceFile  # noqa
+from zuikuihuoshou.parser.archive.ar import ArchiveFile  # noqa
+from zuikuihuoshou.parser.archive.arj import ArjParser  # noqa
+from zuikuihuoshou.parser.archive.bomstore import BomFile  # noqa
+from zuikuihuoshou.parser.archive.bzip2_parser import Bzip2Parser  # noqa
+from zuikuihuoshou.parser.archive.cab import CabFile  # noqa
+from zuikuihuoshou.parser.archive.gzip_parser import GzipParser  # noqa
+from zuikuihuoshou.parser.archive.tar import TarFile  # noqa
+from zuikuihuoshou.parser.archive.zip import ZipFile  # noqa
+from zuikuihuoshou.parser.archive.rar import RarFile  # noqa
+from zuikuihuoshou.parser.archive.rpm import RpmFile  # noqa
+from zuikuihuoshou.parser.archive.sevenzip import SevenZipParser  # noqa
+from zuikuihuoshou.parser.archive.mar import MarFile  # noqa
+from zuikuihuoshou.parser.archive.mozilla_ar import MozillaArchive  # noqa
+from zuikuihuoshou.parser.archive.zlib import ZlibData  # noqa
+from zuikuihuoshou.parser.archive.prs_pak import PRSPakFile  # noqa

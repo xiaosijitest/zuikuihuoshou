@@ -1,0 +1,19 @@
+syntax: glob
+
+# Generated files: .py => .pyc
+*.pyc
+*.pyo
+__pycache__
+zuikuihuoshou-metadata/zuikuihuoshou_metadata/qt/dialog_ui.py
+
+# Temporary files (vim backups)
+*.swp
+
+# build/ subdirectories
+build
+
+# build by the tox command
+.tox/
+
+# build by distutils
+zuikuihuoshou.egg-info/

@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+from zuikuihuoshou.metadata.qt.main import main
+main()

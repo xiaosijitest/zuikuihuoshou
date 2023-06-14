@@ -1,0 +1,11 @@
+from zuikuihuoshou.parser.audio.aiff import AiffFile  # noqa
+from zuikuihuoshou.parser.audio.au import AuFile  # noqa
+from zuikuihuoshou.parser.audio.itunesdb import ITunesDBFile  # noqa
+from zuikuihuoshou.parser.audio.midi import MidiFile  # noqa
+from zuikuihuoshou.parser.audio.mpeg_audio import MpegAudioFile  # noqa
+from zuikuihuoshou.parser.audio.real_audio import RealAudioFile  # noqa
+from zuikuihuoshou.parser.audio.xm import XMModule  # noqa
+from zuikuihuoshou.parser.audio.s3m import S3MModule  # noqa
+from zuikuihuoshou.parser.audio.s3m import PTMModule  # noqa
+from zuikuihuoshou.parser.audio.mod import AmigaModule  # noqa
+from zuikuihuoshou.parser.audio.flac import FlacParser  # noqa
