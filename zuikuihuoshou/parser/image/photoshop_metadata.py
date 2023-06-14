@@ -1,4 +1,4 @@
-""" Photoshop metadata parser.
+""" Photoshop xiaoxiexx parser.
 
 References:
 - http://www.scribd.com/doc/32900475/Photoshop-File-Formats

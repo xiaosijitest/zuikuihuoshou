@@ -1,5 +1,5 @@
-from zuikuihuoshou.metadata.metadata import RootMetadata, registerExtractor
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import RootMetadata, registerExtractor
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 from zuikuihuoshou.parser.file_system import ISO9660
 from datetime import datetime
 

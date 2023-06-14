@@ -1,5 +1,5 @@
 """
-EXIF metadata parser; also parses TIFF file headers.
+EXIF xiaoxiexx parser; also parses TIFF file headers.
 
 Author: Victor Stinner, Robert Xiao
 

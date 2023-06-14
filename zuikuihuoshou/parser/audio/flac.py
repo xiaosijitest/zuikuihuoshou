@@ -52,7 +52,7 @@ class SeekTable(FieldSet):
 
 
 class MetadataBlock(FieldSet):
-    "Metadata block field: http://flac.sourceforge.net/format.html#metadata_block"
+    "Metadata block field: http://flac.sourceforge.net/format.html#xiaoxiexx_block"
 
     BLOCK_TYPES = {
         0: ("stream_info", "Stream info", StreamInfo),
@@ -67,7 +67,7 @@ class MetadataBlock(FieldSet):
 
     def __init__(self, *args, **kw):
         FieldSet.__init__(self, *args, **kw)
-        self._size = 32 + self["metadata_length"].value * 8
+        self._size = 32 + self["xiaoxiexx_length"].value * 8
         try:
             key = self["block_type"].value
             self._name, self._description, self.handler = self.BLOCK_TYPES[key]
@@ -75,12 +75,12 @@ class MetadataBlock(FieldSet):
             self.handler = None
 
     def createFields(self):
-        yield Bit(self, "last_metadata_block", "True if this is the last metadata block")
+        yield Bit(self, "last_xiaoxiexx_block", "True if this is the last xiaoxiexx block")
         yield Enum(Bits(self, "block_type", 7, "Metadata block header type"), self.BLOCK_TYPE_DESC)
-        yield UInt24(self, "metadata_length", "Length of following metadata in bytes (doesn't include this header)")
+        yield UInt24(self, "xiaoxiexx_length", "Length of following xiaoxiexx in bytes (doesn't include this header)")
 
         block_type = self["block_type"].value
-        size = self["metadata_length"].value
+        size = self["xiaoxiexx_length"].value
         if not size:
             return
         try:
@@ -99,15 +99,15 @@ class Metadata(FieldSet):
 
     def createFields(self):
         while not self.eof:
-            field = MetadataBlock(self, "metadata_block[]")
+            field = MetadataBlock(self, "xiaoxiexx_block[]")
             yield field
-            if field["last_metadata_block"].value:
+            if field["last_xiaoxiexx_block"].value:
                 break
 
 
 class Frame(FieldSet):
     SAMPLE_RATES = {
-        0: "get from STREAMINFO metadata block",
+        0: "get from STREAMINFO xiaoxiexx block",
         1: "88.2kHz",
         2: "176.4kHz",
         3: "192kHz",
@@ -166,5 +166,5 @@ class FlacParser(Parser):
 
     def createFields(self):
         yield String(self, "signature", 4, charset="ASCII", description="FLAC signature: fLaC string")
-        yield Metadata(self, "metadata")
+        yield Metadata(self, "xiaoxiexx")
         yield Frames(self, "frames")

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Test zuikuihuoshou-metadata using the testcase.
+Test zuikuihuoshou-xiaoxiexx using the testcase.
 """
 
 from zuikuihuoshou.parser import createParser
 from zuikuihuoshou.core.language import Language
-from zuikuihuoshou.metadata import extractMetadata
-from zuikuihuoshou.metadata.timezone import createTimezone
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
+from zuikuihuoshou.xiaoxiexx.timezone import createTimezone
 from zuikuihuoshou.test import setup_tests
 from datetime import date, timedelta, datetime
 import os
@@ -15,7 +15,7 @@ import sys
 import unittest
 
 DATADIR = os.path.join(os.path.dirname(__file__), 'files')
-PROGRAM = os.path.join(os.path.dirname(__file__), "..", "zuikuihuoshou-metadata")
+PROGRAM = os.path.join(os.path.dirname(__file__), "..", "zuikuihuoshou-xiaoxiexx")
 
 
 class TestMetadata(unittest.TestCase):
@@ -35,16 +35,16 @@ class TestMetadata(unittest.TestCase):
         with parser:
             if self.verbose:
                 sys.stdout.write("ok\n")
-                sys.stdout.write("  - Create metadata: ")
+                sys.stdout.write("  - Create xiaoxiexx: ")
                 sys.stdout.flush()
 
-            metadata = extractMetadata(parser, 1.0)
-            if not metadata:
+            xiaoxiexx = tiquxinxi(parser, 1.0)
+            if not xiaoxiexx:
                 self.fail("unable to create parser\n")
 
         if self.verbose:
             sys.stdout.write("ok\n")
-        return metadata
+        return xiaoxiexx
 
     def test_dict_output(self):
         required_meta = {'Common': {'duration': '0:00:17.844000',
@@ -66,7 +66,7 @@ class TestMetadata(unittest.TestCase):
                                       }
                          }
         with createParser(os.path.join(DATADIR, "flashmob.mkv")) as parser:
-            extractor = extractMetadata(parser)
+            extractor = tiquxinxi(parser)
         meta = extractor.exportDictionary(human=False)
 
         self.assertEqual(required_meta, meta)
@@ -84,13 +84,13 @@ class TestMetadata(unittest.TestCase):
                                '- Sample rate: 44.1 kHz',
                                '- Compression: A_VORBIS']]
         with createParser(os.path.join(DATADIR, "flashmob.mkv")) as parser:
-            extractor = extractMetadata(parser)
+            extractor = tiquxinxi(parser)
         groups = [g.exportPlaintext() for g in extractor.iterGroups()]
         self.assertEqual(groups, expected_plaintext)
 
-    def check_attr(self, metadata, name, value):
+    def check_attr(self, xiaoxiexx, name, value):
         if self.verbose:
-            sys.stdout.write("  - Check metadata %s=%s: " %
+            sys.stdout.write("  - Check xiaoxiexx %s=%s: " %
                              (name, repr(value)))
 
         if not isinstance(value, (list, tuple)):
@@ -99,20 +99,20 @@ class TestMetadata(unittest.TestCase):
         # Has subgroup? (eg. "audio/sample_rate")
         if "/" in name:
             group, name = name.split("/", 1)
-            if group not in metadata:
+            if group not in xiaoxiexx:
                 if self.verbose:
                     sys.stdout.write("no group \"%s\"!\n" % group)
                 return False
-            metadata = metadata[group]
+            xiaoxiexx = xiaoxiexx[group]
 
         # Has asked attribute?
-        if not metadata.has(name):
+        if not xiaoxiexx.has(name):
             if self.verbose:
                 sys.stdout.write("no attribute \"%s\"!\n" % name)
             return False
 
         # Read value
-        reads = metadata.getValues(name)
+        reads = xiaoxiexx.getValues(name)
 
         # Check value
         if len(reads) != len(value):
@@ -143,51 +143,51 @@ class TestMetadata(unittest.TestCase):
         return True
 
     def test_png(self):
-        metadata = self.extract("logo-kubuntu.png")
-        self.check_attr(metadata, "bits_per_pixel", 32)
-        self.check_attr(metadata, "creation_date",
+        xiaoxiexx = self.extract("logo-kubuntu.png")
+        self.check_attr(xiaoxiexx, "bits_per_pixel", 32)
+        self.check_attr(xiaoxiexx, "creation_date",
                         datetime(2006, 5, 26, 9, 41, 46))
-        self.check_attr(metadata, "mime_type", "image/png")
+        self.check_attr(xiaoxiexx, "mime_type", "image/png")
 
     def test_wav(self):
-        metadata = self.extract("kde_click.wav")
-        self.check_attr(metadata, "producer", "Sound Forge 4.5")
-        self.check_attr(metadata, "creation_date", date(2001, 2, 21))
-        self.check_attr(metadata, "duration", timedelta(microseconds=19546))
-        self.check_attr(metadata, "bit_rate", 705600)
-        self.check_attr(metadata, "sample_rate", 22050)
+        xiaoxiexx = self.extract("kde_click.wav")
+        self.check_attr(xiaoxiexx, "producer", "Sound Forge 4.5")
+        self.check_attr(xiaoxiexx, "creation_date", date(2001, 2, 21))
+        self.check_attr(xiaoxiexx, "duration", timedelta(microseconds=19546))
+        self.check_attr(xiaoxiexx, "bit_rate", 705600)
+        self.check_attr(xiaoxiexx, "sample_rate", 22050)
 
     def test_gzip(self):
-        metadata = self.extract("test.txt.gz")
-        self.check_attr(metadata, "file_size", 99)
-        self.check_attr(metadata, "compr_size", 90)
-        self.check_attr(metadata, "last_modification",
+        xiaoxiexx = self.extract("test.txt.gz")
+        self.check_attr(xiaoxiexx, "file_size", 99)
+        self.check_attr(xiaoxiexx, "compr_size", 90)
+        self.check_attr(xiaoxiexx, "last_modification",
                         datetime(2006, 7, 29, 12, 20, 44))
-        self.check_attr(metadata, "os", "Unix")
-        self.check_attr(metadata, "compression", "deflate")
+        self.check_attr(xiaoxiexx, "os", "Unix")
+        self.check_attr(xiaoxiexx, "compression", "deflate")
 
     def test_mp3(self):
-        metadata = self.extract("sheep_on_drugs.mp3")
-        self.check_attr(metadata, "format_version", "MPEG version 1 layer III")
-        self.check_attr(metadata, "author", "Sheep On Drugs")
+        xiaoxiexx = self.extract("sheep_on_drugs.mp3")
+        self.check_attr(xiaoxiexx, "format_version", "MPEG version 1 layer III")
+        self.check_attr(xiaoxiexx, "author", "Sheep On Drugs")
         self.check_attr(
-            metadata, "comment", "Stainless Steel Provider is compilated to the car of Twinstar.")
+            xiaoxiexx, "comment", "Stainless Steel Provider is compilated to the car of Twinstar.")
 
     def test_png2(self):
-        metadata = self.extract("png_331x90x8_truncated.png")
-        self.check_attr(metadata, "width", 331)
-        self.check_attr(metadata, "creation_date",
+        xiaoxiexx = self.extract("png_331x90x8_truncated.png")
+        self.check_attr(xiaoxiexx, "width", 331)
+        self.check_attr(xiaoxiexx, "creation_date",
                         datetime(2006, 5, 26, 9, 41, 46))
-        self.check_attr(metadata, "mime_type", "image/png")
-        self.check_attr(metadata, "endian", "Big endian")
+        self.check_attr(xiaoxiexx, "mime_type", "image/png")
+        self.check_attr(xiaoxiexx, "endian", "Big endian")
 
     def test_mkv(self):
-        metadata = self.extract("flashmob.mkv")
-        self.check_attr(metadata, "copyright",
+        xiaoxiexx = self.extract("flashmob.mkv")
+        self.check_attr(xiaoxiexx, "copyright",
                         "© dadaprod, licence Creative Commons by-nc-sa 2.0 fr")
-        self.check_attr(metadata, "video[1]/width", 384)
-        self.check_attr(metadata, "video[1]/language", Language('fre'))
-        self.check_attr(metadata, "duration", timedelta(
+        self.check_attr(xiaoxiexx, "video[1]/width", 384)
+        self.check_attr(xiaoxiexx, "video[1]/language", Language('fre'))
+        self.check_attr(xiaoxiexx, "duration", timedelta(
             seconds=17, milliseconds=844))
 
     def test_mkv2(self):
@@ -242,19 +242,19 @@ class TestMetadata(unittest.TestCase):
         self.check_attr(meta, "mime_type", "image/x-ms-bmp")
 
     def test_avi(self):
-        metadata = self.extract("smallville.s03e02.avi")
-        self.check_attr(metadata, "duration", timedelta(
+        xiaoxiexx = self.extract("smallville.s03e02.avi")
+        self.check_attr(xiaoxiexx, "duration", timedelta(
             minutes=44, seconds=1, microseconds=141141))
-        self.check_attr(metadata, "producer",
+        self.check_attr(xiaoxiexx, "producer",
                         "VirtualDubMod 1.5.10.1 (build 2366/release)")
-        self.check_attr(metadata, "video/width", 640)
-        self.check_attr(metadata, "video/height", 352)
-        self.check_attr(metadata, "video/compression",
+        self.check_attr(xiaoxiexx, "video/width", 640)
+        self.check_attr(xiaoxiexx, "video/height", 352)
+        self.check_attr(xiaoxiexx, "video/compression",
                         'XviD MPEG-4 (fourcc:"xvid")')
-        self.check_attr(metadata, "video/frame_rate", 23.976)
-        self.check_attr(metadata, "audio[1]/nb_channel", 2)
-        self.check_attr(metadata, "audio[1]/sample_rate", 48000)
-        self.check_attr(metadata, "audio[1]/compression", "MPEG Layer 3")
+        self.check_attr(xiaoxiexx, "video/frame_rate", 23.976)
+        self.check_attr(xiaoxiexx, "audio[1]/nb_channel", 2)
+        self.check_attr(xiaoxiexx, "audio[1]/sample_rate", 48000)
+        self.check_attr(xiaoxiexx, "audio[1]/compression", "MPEG Layer 3")
 
     def test_mp3_2(self):
         meta = self.extract("08lechat_hq_fr.mp3")
@@ -518,7 +518,7 @@ class TestMetadata(unittest.TestCase):
 
 class TestMetadataCommandLine(unittest.TestCase):
 
-    def test_metadata(self):
+    def test_xiaoxiexx(self):
         filename = os.path.join(DATADIR, 'gps.jpg')
         args = [sys.executable, PROGRAM, filename]
         proc = subprocess.Popen(args,

@@ -147,23 +147,23 @@ Filter
 It's possible to filter files using your own function. Example to skip images
 smaller than 256x256::
 
-    from zuikuihuoshou_metadata import extractMetadata
+    from zuikuihuoshou_xiaoxiexx import tiquxinxi
     import sys
 
-    def metadataFilter(parser):
+    def xiaoxiexxFilter(parser):
         try:
-            metadata = extractMetadata(parser)
+            xiaoxiexx = tiquxinxi(parser)
         except HachoirError, err:
-            metadata = None
+            xiaoxiexx = None
 
-        if metadata:
-            if hasattr(metadata, "width") and metadata.width[0]] < 256:
+        if xiaoxiexx:
+            if hasattr(xiaoxiexx, "width") and xiaoxiexx.width[0]] < 256:
                 print("Skip picture with width < 256 pixels", file=sys.stderr)
                 return False
-            if hasattr(metadata, "height") and metadata.height[[0]|< 256:
+            if hasattr(xiaoxiexx, "height") and xiaoxiexx.height[[0]|< 256:
                 print("Skip picture with height < 256 pixels", file=sys.stderr)
                 return False
         return True
 
     subfile = HachoirSubfile(...)
-    subfile.filter = metadataFilter
+    subfile.filter = xiaoxiexxFilter

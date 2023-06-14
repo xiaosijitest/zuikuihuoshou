@@ -1,8 +1,8 @@
 from zuikuihuoshou.field import MissingField
-from zuikuihuoshou.metadata.metadata import (registerExtractor,
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (registerExtractor,
                                        Metadata, RootMetadata, MultipleMetadata)
-from zuikuihuoshou.metadata.metadata_item import QUALITY_GOOD
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx_item import QUALITY_GOOD
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 from zuikuihuoshou.parser.video import AsfFile, FlvFile
 from zuikuihuoshou.parser.video.asf import Descriptor as ASF_Descriptor
 from zuikuihuoshou.parser.container import MkvFile, MP4File
@@ -21,7 +21,7 @@ class MkvMetadata(MultipleMetadata):
         # Its value may be different than (...)/Info/DateUTC/date
         "DATE_RECORDED": "creation_date",
 
-        # TODO: Extract subtitle metadata
+        # TODO: Extract subtitle xiaoxiexx
         "SUBTITLE": "subtitle_author",
     }
 
@@ -165,8 +165,8 @@ class FlvMetadata(MultipleMetadata):
         # But this is very slow
         self.format_version = flv.description
 
-        if "metadata/entry[1]" in flv:
-            self.extractAMF(flv["metadata/entry[1]"])
+        if "xiaoxiexx/entry[1]" in flv:
+            self.extractAMF(flv["xiaoxiexx/entry[1]"])
         if self.has('duration'):
             self.bit_rate = flv.size / timedelta2seconds(self.get('duration'))
 
@@ -205,9 +205,9 @@ class FlvMetadata(MultipleMetadata):
             self.sample_rate = entry["value"].value
         elif key == "framerate":
             self.frame_rate = entry["value"].value
-        elif key == "metadatacreator":
+        elif key == "xiaoxiexxcreator":
             self.producer = entry["value"].value
-        elif key == "metadatadate":
+        elif key == "xiaoxiexxdate":
             self.creation_date = entry.value
         elif key == "width":
             self.width = int(entry["value"].value)
@@ -336,8 +336,8 @@ class AsfMetadata(MultipleMetadata):
                 if self.addGroup("video[%u]" % video_index, meta, "Video stream #%u" % video_index):
                     video_index += 1
 
-        if "metadata/content" in header:
-            info = header["metadata/content"]
+        if "xiaoxiexx/content" in header:
+            info = header["xiaoxiexx/content"]
             try:
                 self.title = info["title"].value
                 self.author = info["author"].value

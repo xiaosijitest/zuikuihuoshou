@@ -1,13 +1,13 @@
-from zuikuihuoshou.metadata.metadata import (registerExtractor, Metadata,
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (registerExtractor, Metadata,
                                        RootMetadata, MultipleMetadata)
 from zuikuihuoshou.parser.audio import (AuFile, MpegAudioFile, RealAudioFile,
                                   AiffFile, FlacParser)
 from zuikuihuoshou.parser.container import OggFile, RealMediaFile
 from zuikuihuoshou.core.tools import makePrintable, timedelta2seconds, humanBitRate
 from datetime import timedelta
-from zuikuihuoshou.metadata.metadata_item import (QUALITY_FAST, QUALITY_NORMAL,
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx_item import (QUALITY_FAST, QUALITY_NORMAL,
                                             QUALITY_BEST)
-from zuikuihuoshou.metadata.safe import fault_tolerant, getValue
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant, getValue
 
 
 def computeComprRate(meta, size):
@@ -53,17 +53,17 @@ VORBIS_KEY_TO_ATTR = {
 
 
 @fault_tolerant
-def readVorbisComment(metadata, comment):
-    metadata.producer = getValue(comment, "vendor")
-    for item in comment.array("metadata"):
+def readVorbisComment(xiaoxiexx, comment):
+    xiaoxiexx.producer = getValue(comment, "vendor")
+    for item in comment.array("xiaoxiexx"):
         if "=" in item.value:
             key, value = item.value.split("=", 1)
             key = key.upper()
             if key in VORBIS_KEY_TO_ATTR:
                 key = VORBIS_KEY_TO_ATTR[key]
-                setattr(metadata, key, value)
+                setattr(xiaoxiexx, key, value)
             elif value:
-                metadata.warning("Skip Vorbis comment %s: %s" % (key, value))
+                xiaoxiexx.warning("Skip Vorbis comment %s: %s" % (key, value))
 
 
 class OggMetadata(MultipleMetadata):
@@ -166,8 +166,8 @@ class RealAudioMetadata(RootMetadata):
 
     def extract(self, real):
         version = real["version"].value
-        if "metadata" in real:
-            self.useMetadata(real["metadata"])
+        if "xiaoxiexx" in real:
+            self.useMetadata(real["xiaoxiexx"])
         self.useRoot(real)
         self.format_version = "Real audio version %s" % version
         if version == 3:
@@ -408,10 +408,10 @@ class AiffMetadata(RootMetadata):
 class FlacMetadata(RootMetadata):
 
     def extract(self, flac):
-        if "metadata/stream_info/content" in flac:
-            self.useStreamInfo(flac["metadata/stream_info/content"])
-        if "metadata/comment/content" in flac:
-            readVorbisComment(self, flac["metadata/comment/content"])
+        if "xiaoxiexx/stream_info/content" in flac:
+            self.useStreamInfo(flac["xiaoxiexx/stream_info/content"])
+        if "xiaoxiexx/comment/content" in flac:
+            readVorbisComment(self, flac["xiaoxiexx/comment/content"])
 
     @fault_tolerant
     def useStreamInfo(self, info):

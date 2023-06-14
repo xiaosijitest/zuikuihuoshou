@@ -3,14 +3,14 @@ from zuikuihuoshou.core.tools import (
     humanFrequency, humanBitSize, humanFilesize,
     humanDatetime)
 from zuikuihuoshou.core.language import Language
-from zuikuihuoshou.metadata.filter import Filter, NumberFilter, DATETIME_FILTER
+from zuikuihuoshou.xiaoxiexx.filter import Filter, NumberFilter, DATETIME_FILTER
 from datetime import date, datetime, timedelta
-from zuikuihuoshou.metadata.formatter import (
+from zuikuihuoshou.xiaoxiexx.formatter import (
     humanAudioChannel, humanFrameRate, humanComprRate, humanAltitude,
     humanPixelSize, humanDPI)
-from zuikuihuoshou.metadata.setter import (
+from zuikuihuoshou.xiaoxiexx.setter import (
     setDatetime, setTrackNumber, setTrackTotal, setLanguage)
-from zuikuihuoshou.metadata.metadata_item import Data
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx_item import Data
 
 MIN_SAMPLE_RATE = 1000              # 1 kHz
 MAX_SAMPLE_RATE = 192000            # 192 kHz

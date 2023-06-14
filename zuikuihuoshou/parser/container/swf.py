@@ -344,7 +344,7 @@ class Tag(FieldSet):
         73: ("def_font_align[]", "Define font alignment zones", None),
         74: ("csm_txt_set[]", "CSM text settings", None),
         75: ("def_font3[]", "Define font text 3", None),
-        77: ("metadata[]", "XML code describing the movie", None),
+        77: ("xiaoxiexx[]", "XML code describing the movie", None),
         78: ("def_scale_grid[]", "Define scaling factors", None),
         83: ("def_shape4[]", "Define shape 4", None),
         84: ("def_morph2[]", "Define a morphing shape 2", None),

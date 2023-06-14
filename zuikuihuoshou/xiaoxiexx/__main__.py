@@ -1,3 +1,2 @@
-#!/usr/bin/env python3
 from zuikuihuoshou.xiaoxiexx.main import main
 main()

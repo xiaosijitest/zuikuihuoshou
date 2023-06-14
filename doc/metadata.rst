@@ -1,10 +1,10 @@
-.. _metadata:
+.. _xiaoxiexx:
 
 ++++++++++++++++++++++++
-zuikuihuoshou-metadata program
+zuikuihuoshou-xiaoxiexx program
 ++++++++++++++++++++++++
 
-The ``zuikuihuoshou-metadata`` program is a tool to extract metadata from multimedia
+The ``zuikuihuoshou-xiaoxiexx`` program is a tool to extract xiaoxiexx from multimedia
 files: videos, pictures, sounds, archives, etc. It supports most common file
 formats:
 
@@ -26,26 +26,26 @@ Features:
   your terminal charset
 * Remove duplicate values and if a string is a substring of another, just keep
   the longest one
-* Set priority to value, so it's possible to filter metadata (option --level)
+* Set priority to value, so it's possible to filter xiaoxiexx (option --level)
 * Only depends on [[zuikuihuoshou-parser|zuikuihuoshou-parser]] (and not on libmatroska,
   libmpeg2, libvorbis, etc.)
 
 It tries to give as much information as possible. For some file formats,
 it gives more information than libextractor for example, such as the RIFF
 parser, which can extract creation date, software used to generate the file,
-etc. But zuikuihuoshou-metadata cannot guess informations. The most complex operation
+etc. But zuikuihuoshou-xiaoxiexx cannot guess informations. The most complex operation
 is just to compute duration of a music using frame size and file size.
 
-zuikuihuoshou-metadata has three modes:
+zuikuihuoshou-xiaoxiexx has three modes:
 
-* classic mode: extract metadata, you can use --level=LEVEL to limit quantity
+* classic mode: extract xiaoxiexx, you can use --level=LEVEL to limit quantity
   of information to display (and not to extract)
 * ``--type``: show on one line the file format and most important informations
 * ``--mime``: just display file MIME type
 
-The command ``zuikuihuoshou-metadata --mime`` works like ``file --mime``, and
-``zuikuihuoshou-metadata --type`` like ``file``. But today file command supports more
-file formats then zuikuihuoshou-metadata.
+The command ``zuikuihuoshou-xiaoxiexx --mime`` works like ``file --mime``, and
+``zuikuihuoshou-xiaoxiexx --type`` like ``file``. But today file command supports more
+file formats then zuikuihuoshou-xiaoxiexx.
 
 
 Example
@@ -53,7 +53,7 @@ Example
 
 Example on AVI video (RIFF file format)::
 
-    $ zuikuihuoshou-metadata pacte_des_gnous.avi
+    $ zuikuihuoshou-xiaoxiexx pacte_des_gnous.avi
     Common:
     - Duration: 4 min 25 sec
     - Comment: Has audio/video index (248.9 KB)
@@ -145,7 +145,7 @@ Modes --mime and --type
 
 Option ``--mime`` ask to just display file MIME type::
 
-    $ zuikuihuoshou-metadata --mime logo-Kubuntu.png sheep_on_drugs.mp3 wormux_32x32_16c.ico
+    $ zuikuihuoshou-xiaoxiexx --mime logo-Kubuntu.png sheep_on_drugs.mp3 wormux_32x32_16c.ico
     logo-Kubuntu.png: image/png
     sheep_on_drugs.mp3: audio/mpeg
     wormux_32x32_16c.ico: image/x-ico
@@ -154,7 +154,7 @@ Option ``--mime`` ask to just display file MIME type::
 
 Option ``--type`` display short description of file type::
 
-    $ zuikuihuoshou-metadata --type logo-Kubuntu.png sheep_on_drugs.mp3 wormux_32x32_16c.ico
+    $ zuikuihuoshou-xiaoxiexx --type logo-Kubuntu.png sheep_on_drugs.mp3 wormux_32x32_16c.ico
     logo-Kubuntu.png: PNG picture: 331x90x8 (alpha layer)
     sheep_on_drugs.mp3: MPEG v1 layer III, 128.0 Kbit/sec, 44.1 KHz, Joint stereo
     wormux_32x32_16c.ico: Microsoft Windows icon: 16x16x32
@@ -162,12 +162,12 @@ Option ``--type`` display short description of file type::
 (it works like UNIX "file" program)
 
 
-Filter metadatas with --level
+Filter xiaoxiexxs with --level
 -----------------------------
 
-zuikuihuoshou-metadata is a too much verbose by default::
+zuikuihuoshou-xiaoxiexx is a too much verbose by default::
 
-    $ zuikuihuoshou-metadata logo-Kubuntu.png
+    $ zuikuihuoshou-xiaoxiexx logo-Kubuntu.png
     Image:
     - Image width: 331
     - Image height: 90
@@ -180,7 +180,7 @@ zuikuihuoshou-metadata is a too much verbose by default::
 
 You can skip useless information (here, only until level 7)::
 
-    $ zuikuihuoshou-metadata --level=7 logo-Kubuntu.png
+    $ zuikuihuoshou-xiaoxiexx --level=7 logo-Kubuntu.png
     Image:
     - Image width: 331
     - Image height: 90
@@ -191,7 +191,7 @@ You can skip useless information (here, only until level 7)::
 
 Example to get most importation informations (level 3)::
 
-    $ zuikuihuoshou-metadata --level=3 logo-Kubuntu.png
+    $ zuikuihuoshou-xiaoxiexx --level=3 logo-Kubuntu.png
     Image:
     - Image width: 331
     - Image height: 90
@@ -210,7 +210,7 @@ See also
 Used by
 -------
 
-zuikuihuoshou-metadata library is used by:
+zuikuihuoshou-xiaoxiexx library is used by:
 
 * `Plone4artist <http://plone.org/products/plone4artistsvideo/>`_
 * `amplee <http://trac.defuze.org/wiki/amplee>`_ (implementation of the Atom Publishing Protocol, APP)
@@ -223,17 +223,17 @@ Informations
 * (fr) `DCMI Metadata Terms <http://dublincore.org/documents/dcmi-terms/>`_: Classification of meta-datas done by the //Dublin Core//
 * (fr) `Dublin Core article on Openweb website <http://openweb.eu.org/articles/dublin_core/>`_
 * (fr) `avi_ogminfo <http://www.xwing.info/index.php?p=avi_ogminfo>`_ : Informations about AVI and OGM files
-* (en) `Xesam <http://wiki.freedesktop.org/wiki/XesamAbout>`_ (was Wasabi): common interface between programs extracting metadata
+* (en) `Xesam <http://wiki.freedesktop.org/wiki/XesamAbout>`_ (was Wasabi): common interface between programs extracting xiaoxiexx
 
 Libraries
 ---------
 
 * (fr|en) `MediaInfo <http://mediainfo.sourceforge.net>`_ (GPL v2, C++)
-* (en) `Mutagen <http://www.sacredchao.net/quodlibet/wiki/Development/Mutagen>`_: audio metadata tag reader and writer (Python)
+* (en) `Mutagen <http://www.sacredchao.net/quodlibet/wiki/Development/Mutagen>`_: audio xiaoxiexx tag reader and writer (Python)
 * (en) `getid3 <http://getid3.sourceforge.net/>`_: Library written in PHP to extact meta-datas from several multimedia file formats (and not only MP3)
 * (fr|en) `libextractor <http://gnunet.org/libextractor/>`_: Library dedicated to meta-data extraction. See also: (en) `Bader's Python binding <http://cheeseshop.python.org/pypi/Extractor>`_
 * (en) `Kaa <http://freevo.sourceforge.net/cgi-bin/freevo-2.0/Kaa>`_ (part of Freevo), it replaces `mmpython (Media Metadata for Python) <http://sourceforge.net/projects/mmpython/>`_ (dead project)
-* (en) `ExifTool <http://search.cpan.org/~exiftool/Image-ExifTool-6.29/exiftool>`_: Perl library to read and write metadata
+* (en) `ExifTool <http://search.cpan.org/~exiftool/Image-ExifTool-6.29/exiftool>`_: Perl library to read and write xiaoxiexx
 
 Programs
 --------
@@ -243,10 +243,10 @@ Programs
 * mkvinfo
 * mp3info
 
-Programs using metadata
+Programs using xiaoxiexx
 -----------------------
 
-* Programs using metadata:
+* Programs using xiaoxiexx:
 
   - `GLScube <http://www.glscube.org/>`_
   - `Beagle <http://beagle-project.org/>`_ (`Kerry <http://kde-apps.org/content/show.php?content=36832>`_)
@@ -264,7 +264,7 @@ Programs using metadata
 Metadata examples
 =================
 
-:ref:`zuikuihuoshou-metadata <metadata>` (version 0.10) output examples.
+:ref:`zuikuihuoshou-xiaoxiexx <xiaoxiexx>` (version 0.10) output examples.
 
 Video
 -----

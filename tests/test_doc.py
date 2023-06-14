@@ -58,9 +58,9 @@ class TestDoc(unittest.TestCase):
         self.check_module("zuikuihuoshou.core.text_handler")
         self.check_module("zuikuihuoshou.core.tools")
 
-    def test_zuikuihuoshou_metadata(self):
-        self.check_module("zuikuihuoshou.metadata.metadata")
-        self.check_module("zuikuihuoshou.metadata.setter")
+    def test_zuikuihuoshou_xiaoxiexx(self):
+        self.check_module("zuikuihuoshou.xiaoxiexx.xiaoxiexx")
+        self.check_module("zuikuihuoshou.xiaoxiexx.setter")
 
     def test_zuikuihuoshou_regex(self):
         self.check_module("zuikuihuoshou.regex.parser")

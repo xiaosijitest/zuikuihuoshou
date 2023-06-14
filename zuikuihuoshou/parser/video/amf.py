@@ -1,5 +1,5 @@
 """
-AMF metadata (inside Flash video, FLV file) parser.
+AMF xiaoxiexx (inside Flash video, FLV file) parser.
 
 Documentation:
 

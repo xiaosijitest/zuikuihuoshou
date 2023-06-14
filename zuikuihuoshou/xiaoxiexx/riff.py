@@ -1,14 +1,14 @@
 """
-Extract metadata from RIFF file format: AVI video and WAV sound.
+Extract xiaoxiexx from RIFF file format: AVI video and WAV sound.
 """
 
-from zuikuihuoshou.metadata.metadata import (Metadata, MultipleMetadata,
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (Metadata, MultipleMetadata,
                                        registerExtractor)
-from zuikuihuoshou.metadata.safe import fault_tolerant, getValue
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant, getValue
 from zuikuihuoshou.parser.container.riff import RiffFile
 from zuikuihuoshou.parser.video.fourcc import UNCOMPRESSED_AUDIO
 from zuikuihuoshou.core.tools import humanFilesize, makeUnicode, timedelta2seconds
-from zuikuihuoshou.metadata.audio import computeComprRate as computeAudioComprRate
+from zuikuihuoshou.xiaoxiexx.audio import computeComprRate as computeAudioComprRate
 from datetime import timedelta
 
 
@@ -46,7 +46,7 @@ class RiffMetadata(MultipleMetadata):
         value = chunk["text"].value
         tag = chunk["tag"].value
         if tag not in self.TAG_TO_KEY:
-            self.warning("Skip RIFF metadata %s: %s" % (tag, value))
+            self.warning("Skip RIFF xiaoxiexx %s: %s" % (tag, value))
             return
         key = self.TAG_TO_KEY[tag]
         setattr(self, key, value)

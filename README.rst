@@ -31,8 +31,8 @@ butchers to divide binary files into fields.
 Command line tools using Hachoir parsers:
 
 * zuikuihuoshou-grep: find a text pattern in a binary file
-* zuikuihuoshou-metadata: get metadata from binary files
-* zuikuihuoshou-strip: modify a file to remove metadata
+* zuikuihuoshou-xiaoxiexx: get xiaoxiexx from binary files
+* zuikuihuoshou-strip: modify a file to remove xiaoxiexx
 * zuikuihuoshou-urwid: display the content of a binary file in text mode
 
 Installation instructions: http://zuikuihuoshou.readthedocs.io/en/latest/install.html

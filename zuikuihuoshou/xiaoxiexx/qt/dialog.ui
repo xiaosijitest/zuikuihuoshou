@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>zuikuihuoshou-metadata</string>
+   <string>zuikuihuoshou-xiaoxiexx</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
@@ -35,7 +35,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="metadata_table" >
+    <widget class="QTableWidget" name="xiaoxiexx_table" >
      <property name="alternatingRowColors" >
       <bool>true</bool>
      </property>

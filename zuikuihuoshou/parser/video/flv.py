@@ -5,7 +5,7 @@ Documentation:
 
  - FLV File format: http://osflash.org/flv
  - libavformat from ffmpeg project
- - flashticle: Python project to read Flash (SWF and FLV with AMF metadata)
+ - flashticle: Python project to read Flash (SWF and FLV with AMF xiaoxiexx)
    http://undefined.org/python/#flashticle
 
 Author: Victor Stinner
@@ -96,7 +96,7 @@ class Chunk(FieldSet):
     tag_info = {
         8: ("audio[]", parseAudio, ""),
         9: ("video[]", parseVideo, ""),
-        18: ("metadata", parseAMF, ""),
+        18: ("xiaoxiexx", parseAMF, ""),
     }
 
     def __init__(self, *args, **kw):

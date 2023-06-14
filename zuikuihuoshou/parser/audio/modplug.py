@@ -1,5 +1,5 @@
 """
-Modplug metadata inserted into module files.
+Modplug xiaoxiexx inserted into module files.
 
 Doc:
 - http://modplug.svn.sourceforge.net/viewvc/modplug/trunk/modplug/soundlib/

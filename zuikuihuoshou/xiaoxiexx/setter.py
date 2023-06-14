@@ -3,8 +3,8 @@ import re
 from zuikuihuoshou.core.language import Language
 from locale import setlocale, LC_ALL
 from time import strptime
-from zuikuihuoshou.metadata.timezone import createTimezone
-from zuikuihuoshou.metadata import config
+from zuikuihuoshou.xiaoxiexx.timezone import createTimezone
+from zuikuihuoshou.xiaoxiexx import config
 
 NORMALIZE_REGEX = re.compile("[-/.: ]+")
 YEAR_REGEX1 = re.compile("^([0-9]{4})$")

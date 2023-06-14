@@ -1,11 +1,11 @@
-from zuikuihuoshou.metadata.metadata import RootMetadata, registerExtractor
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import RootMetadata, registerExtractor
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 from zuikuihuoshou.parser.container import SwfFile
 from zuikuihuoshou.parser.misc import TorrentFile, TrueTypeFontFile, OLE2_File, PcfFile
 from zuikuihuoshou.field import isString
 from zuikuihuoshou.core.error import warning
 from zuikuihuoshou.parser import guessParser
-from zuikuihuoshou.metadata.setter import normalizeString
+from zuikuihuoshou.xiaoxiexx.setter import normalizeString
 
 
 class TorrentMetadata(RootMetadata):
@@ -192,7 +192,7 @@ class OLE2_Metadata(RootMetadata):
         if prop_id in ignore:
             return
 
-        # Get Hachoir metadata key
+        # Get Hachoir xiaoxiexx key
         try:
             key = id_to_attr[prop_id]
             use_prefix = False

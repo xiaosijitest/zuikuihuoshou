@@ -9,7 +9,7 @@ include TODO.rst
 include tox.ini
 include .travis.yml
 include runtests.py
-include zuikuihuoshou-metadata-csv
+include zuikuihuoshou-xiaoxiexx-csv
 include run_testcase.py
 
 include doc/*.rst doc/conf.py doc/make.bat doc/Makefile doc/gen_parser_list.py
@@ -19,7 +19,7 @@ include tests/*.py tests/*.rst tests/files/*
 
 # IGNORED files:
 #
-# zuikuihuoshou-metadata-gtk
-# zuikuihuoshou-metadata-qt
-# zuikuihuoshou/metadata/qt/dialog.ui
+# zuikuihuoshou-xiaoxiexx-gtk
+# zuikuihuoshou-xiaoxiexx-qt
+# zuikuihuoshou/xiaoxiexx/qt/dialog.ui
 # tools/*.py

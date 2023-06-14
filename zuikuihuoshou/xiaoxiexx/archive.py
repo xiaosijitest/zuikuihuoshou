@@ -1,6 +1,6 @@
-from zuikuihuoshou.metadata.metadata_item import QUALITY_BEST, QUALITY_FASTEST
-from zuikuihuoshou.metadata.safe import fault_tolerant, getValue
-from zuikuihuoshou.metadata.metadata import (
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx_item import QUALITY_BEST, QUALITY_FASTEST
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant, getValue
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (
     RootMetadata, Metadata, MultipleMetadata, registerExtractor)
 from zuikuihuoshou.parser.archive import (Bzip2Parser, CabFile, GzipParser,
                                     TarFile, ZipFile, MarFile)

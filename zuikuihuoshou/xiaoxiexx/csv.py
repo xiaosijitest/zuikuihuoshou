@@ -1,6 +1,6 @@
 from zuikuihuoshou.parser import createParser
 from zuikuihuoshou.core.tools import makePrintable
-from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
 from zuikuihuoshou.core.i18n import initLocale
 from sys import argv, stderr, exit
 from os import walk
@@ -8,7 +8,7 @@ from os.path import join as path_join
 from fnmatch import fnmatch
 import codecs
 
-OUTPUT_FILENAME = "metadata.csv"
+OUTPUT_FILENAME = "xiaoxiexx.csv"
 
 
 class Extractor:
@@ -54,18 +54,18 @@ class Extractor:
             print("Unable to parse file", file=stderr)
             return None
         try:
-            metadata = extractMetadata(parser)
+            xiaoxiexx = tiquxinxi(parser)
         except Exception as err:
             print("Metadata extraction error: %s" % str(err), file=stderr)
             return None
-        if not metadata:
-            print("Unable to extract metadata", file=stderr)
+        if not xiaoxiexx:
+            print("Unable to extract xiaoxiexx", file=stderr)
             return None
 
         filename = makePrintable(filename, self.charset)
         line = [filename]
         for field in self.fields:
-            value = metadata.getText(field, '')
+            value = xiaoxiexx.getText(field, '')
             value = makePrintable(value, self.charset)
             line.append(value)
         return '; '.join(line)

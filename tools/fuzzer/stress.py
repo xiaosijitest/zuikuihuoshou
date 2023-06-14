@@ -26,7 +26,7 @@ class Fuzzer:
         self.verbose = False
 
     def filterError(self, text):
-        if "Error during metadata extraction" in text:
+        if "Error during xiaoxiexx extraction" in text:
             return False
         if text.startswith("Error when creating MIME type"):
             return True
@@ -52,7 +52,7 @@ class Fuzzer:
             if re.match("^(second|minute|hour|month) must be in ", why):
                 return True
         if re.match("days=[0-9]+; must have magnitude ", text):
-            # Error during metadata extraction: days=1143586582; must have
+            # Error during xiaoxiexx extraction: days=1143586582; must have
             # magnitude <= 999999999
             return True
         if "floating point overflow" in text:

@@ -300,7 +300,7 @@ class InodeGen:
         address, size, last = next(self.cluster)
         if self.filesize:
             if self.done >= self.filesize:
-                error("(FAT) bad metadata for " + self.path)
+                error("(FAT) bad xiaoxiexx for " + self.path)
                 return
             field = File(self.root, name, size=size)
             if prev.first is None:

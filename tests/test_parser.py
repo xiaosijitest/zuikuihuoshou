@@ -277,7 +277,7 @@ class TestParsers(unittest.TestCase):
         self.checkValue(parser, "/audio[2]/timestamp", 52)
         self.checkDisplay(parser, "/video[0]/codec", "Sorensen H.263")
         self.checkValue(
-            parser, "/metadata/entry[1]/item[8]/attr[1]/item[4]/value/exponent", 20)
+            parser, "/xiaoxiexx/entry[1]/item[8]/attr[1]/item[4]/value/exponent", 20)
 
     def test_tcpdump(self):
         parser = self.parse("arp_dns_ping_dns.tcpdump")

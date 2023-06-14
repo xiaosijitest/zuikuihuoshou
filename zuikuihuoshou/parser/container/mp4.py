@@ -726,7 +726,7 @@ class ItemList(FieldSet):
     def createFields(self):
         handler = findHandler(self)
         if handler is None:
-            raise ParserError("ilst couldn't find metadata handler")
+            raise ParserError("ilst couldn't find xiaoxiexx handler")
         if handler['subtype'].value == 'mdir':
             while not self.eof:
                 yield Atom(self, "atom[]")
@@ -1111,7 +1111,7 @@ class Atom(FieldSet):
         "ftyp": (FileType, "file_type", "File type and compatibility"),
         # pdin: progressive download information
         # pnot: movie preview (old QT spec)
-        "moov": (AtomList, "movie", "Container for all metadata"),
+        "moov": (AtomList, "movie", "Container for all xiaoxiexx"),
             "mvhd": (MovieHeader, "movie_hdr", "Movie header, overall declarations"),
             # clip: movie clipping (old QT spec)
                 # crgn: movie clipping region (old QT spec)
@@ -1129,7 +1129,7 @@ class Atom(FieldSet):
                 "senc": (SampleEncryptionBox, "senc", "Sample encryption information"),
                 "mdia": (AtomList, "media", "Container for the media information in a track"),
                     "mdhd": (MediaHeader, "media_hdr", "Media header, overall information about the media"),
-                    "hdlr": (Handler, "hdlr", "Handler, declares the media or metadata (handler) type"),
+                    "hdlr": (Handler, "hdlr", "Handler, declares the media or xiaoxiexx (handler) type"),
                     "minf": (AtomList, "minf", "Media information container"),
                         "vmhd": (VideoMediaHeader, "vmhd", "Video media header, overall information (video track only)"),
                         "smhd": (SoundMediaHeader, "smhd", "Sound media header, overall information (sound track only)"),
@@ -1187,11 +1187,11 @@ class Atom(FieldSet):
         # free: free space (unparsed)
         # skip: free space (unparsed)
         "udta": (AtomList, "udta", "User data"),
-        "meta": (META, "meta", "File metadata"),
+        "meta": (META, "meta", "File xiaoxiexx"),
             "keys": (KeyList, "keys", "Metadata keys"),
             # hdlr
             # dinf
-                # dref: data reference, declares source(s) of metadata items
+                # dref: data reference, declares source(s) of xiaoxiexx items
             # ipmc: IPMP control
             # iloc: item location
             # ipro: item protection

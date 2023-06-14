@@ -45,9 +45,9 @@ interesting features:
 Hachoir Metadata Example
 ========================
 
-:ref:`zuikuihuoshou-metadata <metadata>` example:
+:ref:`zuikuihuoshou-xiaoxiexx <xiaoxiexx>` example:
 
-.. literalinclude:: examples/metadata.py
+.. literalinclude:: examples/xiaoxiexx.py
 
 
 zuikuihuoshou.stream: Stream manipulation

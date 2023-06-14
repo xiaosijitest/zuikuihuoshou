@@ -1,5 +1,5 @@
 from zuikuihuoshou.parser import createParser
-from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
 from sys import argv, stderr, exit
 
 if len(argv) != 2:
@@ -13,13 +13,13 @@ if not parser:
 
 with parser:
     try:
-        metadata = extractMetadata(parser)
+        xiaoxiexx = tiquxinxi(parser)
     except Exception as err:
         print("Metadata extraction error: %s" % err)
-        metadata = None
-if not metadata:
-    print("Unable to extract metadata")
+        xiaoxiexx = None
+if not xiaoxiexx:
+    print("Unable to extract xiaoxiexx")
     exit(1)
 
-for line in metadata.exportPlaintext():
+for line in xiaoxiexx.exportPlaintext():
     print(line)

@@ -37,14 +37,14 @@ zuikuihuoshou 3.1.1 (2020-01-06)
 zuikuihuoshou 3.1.0 (2019-10-28)
 ==========================
 
-* Add __main__ submodule to urwid, metadata, strip, wx.  It's now possible to
-  run ``python3 -m zuikuihuoshou.metadata filename`` for example.
+* Add __main__ submodule to urwid, xiaoxiexx, strip, wx.  It's now possible to
+  run ``python3 -m zuikuihuoshou.xiaoxiexx filename`` for example.
 * Remove zuikuihuoshou.version submodule; add zuikuihuoshou.VERSION constant.
 
 zuikuihuoshou 3.0a5 (2019-04-12)
 ==========================
 
-* metadata: Fix for calling ``Dict.values`` property from
+* xiaoxiexx: Fix for calling ``Dict.values`` property from
   ``MultipleMetadata.iterGroups`` method.
 
 zuikuihuoshou 3.0a4 (2019-03-21)
@@ -81,7 +81,7 @@ Enhancements:
 * tga: improvements to adhere more closely to the spec.
 * Add MacRoman win32 codepage
 * tiff/exif: support SubIFDs and tiled images
-* zuikuihuoshou.metadata: add ``exportDictionary()`` method
+* zuikuihuoshou.xiaoxiexx: add ``exportDictionary()`` method
 * java: parse OpcodeCPIndexShort's CPIndex argument properly
 * java: have CPIndex opcodes show argument in display (but not value)
 * java: distinguish CPIndex/CPInfo display from value.
@@ -130,7 +130,7 @@ Parsers:
 New features:
 
 * Python parser supports Python 3.3-3.7 .pyc files.
-* metadata: get comment from ZIP
+* xiaoxiexx: get comment from ZIP
 * Support InputIOStream.read(0)
 * Add a close() method and support for the context manager protocol
   (``with obj: ...``) to parsers, input and output streams.
@@ -160,12 +160,12 @@ zuikuihuoshou 3.0a1 (2017-01-09)
 
 Changes:
 
-* metadata: support TIFF picture
+* xiaoxiexx: support TIFF picture
 
 Big refactoring:
 
 * First release of the Python 3 port
-* The 7 Hachoir subprojects (core, editor, metadata, parser, regex, subfile,
+* The 7 Hachoir subprojects (core, editor, xiaoxiexx, parser, regex, subfile,
   urwid) which lived in different directories are merged again into one big
   unique Python 3 module: zuikuihuoshou. For example, "zuikuihuoshou_parser" becomes
   "zuikuihuoshou.parser".

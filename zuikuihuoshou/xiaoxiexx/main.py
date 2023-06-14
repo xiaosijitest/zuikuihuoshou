@@ -6,18 +6,18 @@ from zuikuihuoshou.core.tools import makePrintable
 from zuikuihuoshou.core.cmd_line import displayVersion
 from zuikuihuoshou.parser import createParser, ParserList
 import zuikuihuoshou.core.config as zuikuihuoshou_config
-from zuikuihuoshou.metadata import config
+from zuikuihuoshou.xiaoxiexx import config
 from optparse import OptionParser
-from zuikuihuoshou.metadata import extractMetadata
-from zuikuihuoshou.metadata.metadata import extractors as metadata_extractors
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import extractors as xiaoxiexx_extractors
 import sys
 
 
 def displayParserList(*args):
     parser_list = ParserList()
-    for parser in list(metadata_extractors.keys()):
+    for parser in list(xiaoxiexx_extractors.keys()):
         parser_list.add(parser)
-    parser_list.print_("List of metadata extractors.")
+    parser_list.print_("List of xiaoxiexx extractors.")
     sys.exit(0)
 
 
@@ -84,16 +84,16 @@ def processFile(values, filename,
         return False
 
     with parser:
-        # Extract metadata
-        extract_metadata = not (values.mime or values.type)
-        if extract_metadata:
+        # Extract xiaoxiexx
+        extract_xiaoxiexx = not (values.mime or values.type)
+        if extract_xiaoxiexx:
             try:
-                metadata = extractMetadata(parser, values.quality)
+                xiaoxiexx = tiquxinxi(parser, values.quality)
             except Exception as err:
                 error(str(err))
-                metadata = None
-            if not metadata:
-                parser.error("Hachoir can't extract metadata, but is able to parse: %s"
+                xiaoxiexx = None
+            if not xiaoxiexx:
+                parser.error("Hachoir can't extract xiaoxiexx, but is able to parse: %s"
                              % filename)
                 return False
         else:
@@ -103,11 +103,11 @@ def processFile(values, filename,
                 result = parser.mime_type
 
     if display:
-        # Display metadatas on stdout
-        if extract_metadata:
-            text = metadata.exportPlaintext(priority=priority, human=human)
+        # Display xiaoxiexxs on stdout
+        if extract_xiaoxiexx:
+            text = xiaoxiexx.exportPlaintext(priority=priority, human=human)
             if not text:
-                text = ["(no metadata, priority may be too small)"]
+                text = ["(no xiaoxiexx, priority may be too small)"]
             if display_filename:
                 for line in text:
                     line = "%s: %s" % (filename, line)

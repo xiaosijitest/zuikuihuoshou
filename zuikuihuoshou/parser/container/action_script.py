@@ -588,7 +588,7 @@ class ABCTrait(FieldSet):
         yield Enum(Bits(self, "kind", 4), self.TRAIT_KIND)
         yield Enum(Bit(self, "is_final"), {True: 'final', False: 'virtual'})
         yield Enum(Bit(self, "is_override"), {True: 'override', False: 'new'})
-        yield Bit(self, "has_metadata")
+        yield Bit(self, "has_xiaoxiexx")
         yield Bits(self, "unused", 1)
         kind = self["kind"].value
         if kind in (0, 6):  # slot, const
@@ -607,8 +607,8 @@ class ABCTrait(FieldSet):
         elif kind == 5:  # function
             yield FlashU30(self, "disp_id")
             yield ABCMethodIndex(self, "method_info")
-        if self['has_metadata'].value:
-            yield ABCObjectArray(self, "metadata", FlashU30)
+        if self['has_xiaoxiexx'].value:
+            yield ABCObjectArray(self, "xiaoxiexx", FlashU30)
 
 
 class ABCValueKind(FieldSet):
@@ -735,7 +735,7 @@ def parseABC(parent, size):
     yield ABCConstantPool(parent, "multiname", ABCConstantMultiname)
 
     yield ABCObjectArray(parent, "method", ABCMethodInfo)
-    yield ABCObjectArray(parent, "metadata", ABCMetadataInfo)
+    yield ABCObjectArray(parent, "xiaoxiexx", ABCMetadataInfo)
     yield ABCClassArray(parent, "class")
     yield ABCObjectArray(parent, "script", ABCScriptInfo)
     yield ABCObjectArray(parent, "body", ABCMethodBody)

@@ -1,5 +1,5 @@
 """
-IPTC metadata parser (can be found in a JPEG picture for example)
+IPTC xiaoxiexx parser (can be found in a JPEG picture for example)
 
 Sources:
 - Image-MetaData Perl module:

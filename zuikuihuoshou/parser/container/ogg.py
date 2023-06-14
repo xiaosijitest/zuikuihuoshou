@@ -53,7 +53,7 @@ def parseVorbisComment(parent):
     yield PascalString32(parent, 'vendor', charset="UTF-8")
     yield UInt32(parent, 'count')
     for index in range(parent["count"].value):
-        yield PascalString32(parent, 'metadata[]', charset="UTF-8")
+        yield PascalString32(parent, 'xiaoxiexx[]', charset="UTF-8")
     if parent.current_size != parent.size:
         yield UInt8(parent, "framing_flag")
 

@@ -7,13 +7,13 @@ from PyQt4.QtCore import Qt
 from PyQt4.QtGui import (QApplication, QDialog,
                          QTableWidgetItem, QFileDialog, QMessageBox)
 
-from zuikuihuoshou.metadata.qt.dialog_ui import Ui_Form
+from zuikuihuoshou.xiaoxiexx.qt.dialog_ui import Ui_Form
 from zuikuihuoshou.core import config
 from zuikuihuoshou.core.error import HACHOIR_ERRORS
 from zuikuihuoshou.core.cmd_line import unicodeFilename
 from zuikuihuoshou.parser import createParser
-from zuikuihuoshou.metadata import extractMetadata
-from zuikuihuoshou.metadata.metadata import MultipleMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import MultipleMetadata
 
 
 config.quiet = True
@@ -52,13 +52,13 @@ class File:
         if not self.parser:
             raise MetadataError("Unable to parse the file: %s" % self.name)
         try:
-            self.metadata = extractMetadata(self.parser)
+            self.xiaoxiexx = tiquxinxi(self.parser)
         except HACHOIR_ERRORS as err:
             raise MetadataError("Metadata extraction error: %s" % str(err))
-        if not self.metadata:
+        if not self.xiaoxiexx:
             file_type = self.parser.mime_type
             raise MetadataError(
-                "Unable to extract metadata from file of type %s" % file_type)
+                "Unable to extract xiaoxiexx from file of type %s" % file_type)
 
 
 class Metadata(QDialog, Ui_Form):
@@ -78,8 +78,8 @@ class Metadata(QDialog, Ui_Form):
             self.files_combo,
             SIGNAL("currentIndexChanged(const QString&)"),
             self.changeFile)
-        self.metadata_table.horizontalHeader().hide()
-        self.metadata_table.verticalHeader().hide()
+        self.xiaoxiexx_table.horizontalHeader().hide()
+        self.xiaoxiexx_table.verticalHeader().hide()
 
     def open(self):
         filename = QFileDialog.getOpenFileName(
@@ -99,26 +99,26 @@ class Metadata(QDialog, Ui_Form):
         self.application.quit()
 
     def fillList(self, file):
-        table = self.metadata_table
-        metadata = file.metadata
-        groups = [metadata]
-        if isinstance(metadata, MultipleMetadata):
-            groups.extend(list(metadata.iterGroups()))
+        table = self.xiaoxiexx_table
+        xiaoxiexx = file.xiaoxiexx
+        groups = [xiaoxiexx]
+        if isinstance(xiaoxiexx, MultipleMetadata):
+            groups.extend(list(xiaoxiexx.iterGroups()))
         total = 0
-        for index, metadata in enumerate(groups):
-            group_name = metadata.header
-            metadata = [data for data in metadata if data.values]
-            metadata.sort()
+        for index, xiaoxiexx in enumerate(groups):
+            group_name = xiaoxiexx.header
+            xiaoxiexx = [data for data in xiaoxiexx if data.values]
+            xiaoxiexx.sort()
             if 0 < index:
-                metadata.insert(0, group_name)
-            groups[index] = metadata
-            total += len(metadata)
+                xiaoxiexx.insert(0, group_name)
+            groups[index] = xiaoxiexx
+            total += len(xiaoxiexx)
         table.clear()
         table.setColumnCount(2)
         table.setRowCount(total)
         row = 0
-        for metadata in groups:
-            for data in metadata:
+        for xiaoxiexx in groups:
+            for data in xiaoxiexx:
                 if isinstance(data, str):
                     table.setItem(row, 0, CustomTableWidgetItem("-- group --"))
                     table.setItem(row, 1, CustomTableWidgetItem(data))
@@ -157,11 +157,11 @@ class Metadata(QDialog, Ui_Form):
 
 def main():
     app = QApplication(argv)
-    metadata = Metadata(app)
+    xiaoxiexx = Metadata(app)
     for filename in argv[1:]:
         realname = filename
         filename = unicodeFilename(filename)
-        metadata.addFile(filename, realname)
-    metadata.show()
+        xiaoxiexx.addFile(filename, realname)
+    xiaoxiexx.show()
     exitcode = app.exec_()
     exit(exitcode)

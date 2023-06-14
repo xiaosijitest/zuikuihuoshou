@@ -3,7 +3,7 @@ from os.path import basename
 from random import randint
 from tools import getFilesize, generateUniqueID
 from zuikuihuoshou.stream import InputIOStream, InputStreamError
-from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
 from zuikuihuoshou.parser import guessParser
 from io import StringIO
 from array import array
@@ -162,13 +162,13 @@ class FileFuzzer:
             self.info("Unable to create parser: stop")
             return None
 
-        # Extract metadata
+        # Extract xiaoxiexx
         try:
-            metadata = extractMetadata(parser, 0.5)
+            xiaoxiexx = tiquxinxi(parser, 0.5)
             failure = bool(self.fuzzer.log_error)
         except Exception as err:
             self.info("SERIOUS ERROR: %s" % err)
-            self.prefix = "metadata"
+            self.prefix = "xiaoxiexx"
             failure = True
         duration = time() - start
 
@@ -177,10 +177,10 @@ class FileFuzzer:
             self.info("Process is too long: %.1f seconds" % duration)
             failure = True
             self.prefix = "timeout"
-        if not failure and (metadata is None or not metadata):
-            self.info("Unable to extract metadata")
+        if not failure and (xiaoxiexx is None or not xiaoxiexx):
+            self.info("Unable to extract xiaoxiexx")
             return None
-#        for line in metadata.exportPlaintext():
+#        for line in xiaoxiexx.exportPlaintext():
 #            print(">>> %s" % line)
         return failure
 

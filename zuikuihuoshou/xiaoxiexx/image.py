@@ -1,11 +1,11 @@
-from zuikuihuoshou.metadata.metadata import (registerExtractor, Metadata,
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (registerExtractor, Metadata,
                                        RootMetadata, MultipleMetadata)
 from zuikuihuoshou.parser.image import (
     BmpFile, IcoFile, PcxFile, GifFile, PngFile, TiffFile,
     XcfFile, TargaFile, WMF_File, PsdFile)
 from zuikuihuoshou.parser.image.png import getBitsPerPixel as pngBitsPerPixel
 from zuikuihuoshou.parser.image.xcf import XcfProperty
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 
 
 def computeComprRate(meta, compr_size):

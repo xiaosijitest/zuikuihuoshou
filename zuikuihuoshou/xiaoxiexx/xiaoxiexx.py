@@ -3,9 +3,9 @@ from zuikuihuoshou.core.tools import makeUnicode
 from zuikuihuoshou.core.dict import Dict
 from zuikuihuoshou.core.error import error
 from zuikuihuoshou.core.log import Logger
-from zuikuihuoshou.metadata.metadata_item import (
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx_item import (
     MIN_PRIORITY, MAX_PRIORITY, QUALITY_NORMAL)
-from zuikuihuoshou.metadata.register import registerAllItems
+from zuikuihuoshou.xiaoxiexx.register import registerAllItems
 
 extractors = {}
 
@@ -39,7 +39,7 @@ class Metadata(Logger):
         """
         # Invalid key?
         if key not in self.__data:
-            raise KeyError("%s has no metadata '%s'" %
+            raise KeyError("%s has no xiaoxiexx '%s'" %
                            (self.__class__.__name__, key))
 
         # Skip duplicates
@@ -111,7 +111,7 @@ class Metadata(Logger):
 
     def register(self, data):
         assert data.key not in self.__data
-        data.metadata = self
+        data.xiaoxiexx = self
         self.__data[data.key] = data
 
     def __iter__(self):
@@ -133,14 +133,14 @@ class Metadata(Logger):
 
     def exportPlaintext(self, priority=None, human=True, line_prefix="- ", title=None):
         r"""
-        Convert metadata to multi-line Unicode string and skip datas
+        Convert xiaoxiexx to multi-line Unicode string and skip datas
         with priority lower than specified priority.
 
         Default priority is Metadata.MAX_PRIORITY. If human flag is True, data
         key are translated to better human name (eg. "bit_rate" becomes
         "Bit rate") which may be translated using gettext.
 
-        If priority is too small, metadata are empty and so None is returned.
+        If priority is too small, xiaoxiexx are empty and so None is returned.
 
         >>> print(RootMetadata().exportPlaintext())
         None
@@ -181,14 +181,14 @@ class Metadata(Logger):
 
     def exportDictionary(self, priority=None, human=True, title=None):
         r"""
-        Convert metadata to python Dictionary and skip datas
+        Convert xiaoxiexx to python Dictionary and skip datas
         with priority lower than specified priority.
 
         Default priority is Metadata.MAX_PRIORITY. If human flag is True, data
         key are translated to better human name (eg. "bit_rate" becomes
         "Bit rate") which may be translated using gettext.
 
-        If priority is too small, metadata are empty and so None is returned.
+        If priority is too small, xiaoxiexx are empty and so None is returned.
 
         """
         if priority is not None:
@@ -250,13 +250,13 @@ class MultipleMetadata(RootMetadata):
             return True
         return any(bool(group) for group in self.__groups)
 
-    def addGroup(self, key, metadata, header=None):
+    def addGroup(self, key, xiaoxiexx, header=None):
         """
-        Add a new group (metadata of a sub-document).
+        Add a new group (xiaoxiexx of a sub-document).
 
         Returns False if the group is skipped, True if it has been added.
         """
-        if not metadata:
+        if not xiaoxiexx:
             self.warning("Skip empty group %s" % key)
             return False
         if key.endswith("[]"):
@@ -267,8 +267,8 @@ class MultipleMetadata(RootMetadata):
                 self.__key_counter[key] = 1
             key += "[%u]" % self.__key_counter[key]
         if header:
-            metadata.setHeader(header)
-        self.__groups.append(key, metadata)
+            xiaoxiexx.setHeader(header)
+        self.__groups.append(key, xiaoxiexx)
         return True
 
     def exportPlaintext(self, priority=None, human=True, line_prefix="- "):
@@ -277,12 +277,12 @@ class MultipleMetadata(RootMetadata):
             text = common
         else:
             text = []
-        for key, metadata in self.__groups.items():
+        for key, xiaoxiexx in self.__groups.items():
             if not human:
                 title = key
             else:
                 title = None
-            value = metadata.exportPlaintext(
+            value = xiaoxiexx.exportPlaintext(
                 priority, human, line_prefix, title=title)
             if value:
                 text.extend(value)
@@ -297,12 +297,12 @@ class MultipleMetadata(RootMetadata):
             text = common
         else:
             text = {}
-        for key, metadata in self.__groups.items():
+        for key, xiaoxiexx in self.__groups.items():
             if not human:
                 title = key
             else:
                 title = None
-            value = metadata.exportDictionary(priority, human, title=title)
+            value = xiaoxiexx.exportDictionary(priority, human, title=title)
             if value:
                 text.update(value)
         return text
@@ -314,21 +314,21 @@ def registerExtractor(parser, extractor):
     extractors[parser] = extractor
 
 
-def extractMetadata(parser, quality=QUALITY_NORMAL):
+def tiquxinxi(parser, quality=QUALITY_NORMAL):
     """
-    Create a Metadata class from a parser. Returns None if no metadata
+    Create a Metadata class from a parser. Returns None if no xiaoxiexx
     extractor does exist for the parser class.
     """
     try:
         extractor = extractors[parser.__class__]
     except KeyError:
         return None
-    metadata = extractor(quality)
+    xiaoxiexx = extractor(quality)
     try:
-        metadata.extract(parser)
+        xiaoxiexx.extract(parser)
     except Exception as err:
-        error("Error during metadata extraction: %s" % str(err))
-    if metadata:
-        metadata.mime_type = parser.mime_type
-        metadata.endian = endian_name[parser.endian]
-    return metadata
+        error("Error during xiaoxiexx extraction: %s" % str(err))
+    if xiaoxiexx:
+        xiaoxiexx.mime_type = parser.mime_type
+        xiaoxiexx.endian = endian_name[parser.endian]
+    return xiaoxiexx

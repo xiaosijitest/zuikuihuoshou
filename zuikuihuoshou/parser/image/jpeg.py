@@ -5,7 +5,7 @@ Information:
 
 - APP14 documents
   http://partners.adobe.com/public/developer/en/ps/sdk/5116.DCT_Filter.pdf
-  http://java.sun.com/j2se/1.5.0/docs/api/javax/imageio/metadata/doc-files/jpeg_metadata.html#color
+  http://java.sun.com/j2se/1.5.0/docs/api/javax/imageio/xiaoxiexx/doc-files/jpeg_xiaoxiexx.html#color
 - APP12:
   http://search.cpan.org/~exiftool/Image-ExifTool/lib/Image/ExifTool/TagNames.pod
 - JPEG Data Format
@@ -23,7 +23,7 @@ from zuikuihuoshou.parser.image.common import PaletteRGB
 from zuikuihuoshou.core.endian import BIG_ENDIAN
 from zuikuihuoshou.core.text_handler import textHandler, hexadecimal
 from zuikuihuoshou.parser.image.exif import Exif
-from zuikuihuoshou.parser.image.photoshop_metadata import PhotoshopMetadata
+from zuikuihuoshou.parser.image.photoshop_xiaoxiexx import PhotoshopMetadata
 from zuikuihuoshou.parser.archive.zlib import build_tree
 from zuikuihuoshou.core.tools import paddingSize, alignValue
 
@@ -484,7 +484,7 @@ class JpegChunk(FieldSet):
         0xDC: ("nb_line", "Define number of Lines (DNL)", None),
         0xDD: ("restart_interval", "Define Restart Interval (DRI)", RestartInterval),
         0xE0: ("app0", "APP0", JpegChunkApp0),
-        0xE1: ("exif", "Exif metadata", Exif),
+        0xE1: ("exif", "Exif xiaoxiexx", Exif),
         0xE2: ("icc", "ICC profile", None),
         0xEC: ("app12", "APP12", APP12),
         0xED: ("photoshop", "Photoshop", PhotoshopMetadata),
@@ -514,7 +514,7 @@ class JpegChunk(FieldSet):
         FieldSet.__init__(self, parent, name, description)
         tag = self["type"].value
         if tag == 0xE1:
-            # Hack for Adobe extension: XAP metadata (as XML)
+            # Hack for Adobe extension: XAP xiaoxiexx (as XML)
             bytes = self.stream.readBytes(self.absolute_address + 32, 6)
             if bytes == b"Exif\0\0":
                 self._name = "exif"

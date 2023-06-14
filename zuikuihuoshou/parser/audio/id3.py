@@ -1,5 +1,5 @@
 """
-ID3 metadata parser, supported versions: 1.O, 2.2, 2.3 and 2.4
+ID3 xiaoxiexx parser, supported versions: 1.O, 2.2, 2.3 and 2.4
 
 Informations: http://www.id3.org/
 
@@ -506,7 +506,7 @@ class ID3v2(FieldSet):
         if self["ver_major"].value not in self.VALID_MAJOR_VERSIONS \
                 or self["ver_minor"].value != 0:
             raise MatchError(
-                "Unknown ID3 metadata version (2.%u.%u)"
+                "Unknown ID3 xiaoxiexx version (2.%u.%u)"
                 % (self["ver_major"].value, self["ver_minor"].value))
 
         # Flags

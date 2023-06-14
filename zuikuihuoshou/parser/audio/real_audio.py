@@ -54,7 +54,7 @@ class RealAudioFile(Parser):
             yield UInt16(self, "header_size", "Header size")
             yield RawBytes(self, "Unknown1", 10)
             yield UInt32(self, "data_size", "Data size")
-            yield Metadata(self, "metadata")
+            yield Metadata(self, "xiaoxiexx")
             yield UInt8(self, "Unknown2")
             yield PascalString8(self, "FourCC")
             audio_size = self["data_size"].value
@@ -78,7 +78,7 @@ class RealAudioFile(Parser):
             yield PascalString8(self, "Interleaving ID String")
             yield PascalString8(self, "FourCC")
             yield RawBytes(self, "unknown4", 3)
-            yield Metadata(self, "metadata")
+            yield Metadata(self, "xiaoxiexx")
             audio_size = (self["filesize"].value + 40) - \
                 (self["headersize"].value + 16)
         if 0 < audio_size:

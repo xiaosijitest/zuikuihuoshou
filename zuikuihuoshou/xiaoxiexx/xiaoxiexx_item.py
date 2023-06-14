@@ -1,6 +1,6 @@
 from zuikuihuoshou.core.tools import makeUnicode, normalizeNewline
-from zuikuihuoshou.metadata import config
-from zuikuihuoshou.metadata.setter import normalizeString
+from zuikuihuoshou.xiaoxiexx import config
+from zuikuihuoshou.xiaoxiexx.setter import normalizeString
 
 MIN_PRIORITY = 100
 MAX_PRIORITY = 999
@@ -29,7 +29,7 @@ class Data:
         """
         assert MIN_PRIORITY <= priority <= MAX_PRIORITY
         assert isinstance(description, str)
-        self.metadata = None
+        self.xiaoxiexx = None
         self.key = key
         self.description = description
         self.values = []
@@ -71,15 +71,15 @@ class Data:
         # Convert string to Unicode string using charset ISO-8859-1
         if self.conversion:
             try:
-                new_value = self.conversion(self.metadata, self.key, value)
+                new_value = self.conversion(self.xiaoxiexx, self.key, value)
             except Exception as err:
-                self.metadata.warning("Error during conversion of %r value: %s"
+                self.xiaoxiexx.warning("Error during conversion of %r value: %s"
                                       % (self.key, err))
                 return
             if new_value is None:
                 dest_types = " or ".join(str(item.__name__)
                                          for item in self.type)
-                self.metadata.warning("Unable to convert %s=%r (%s) to %s" % (
+                self.xiaoxiexx.warning("Unable to convert %s=%r (%s) to %s" % (
                     self.key, value, type(value).__name__, dest_types))
                 return
             if isinstance(new_value, tuple):
@@ -99,7 +99,7 @@ class Data:
 
         if self.type and not isinstance(value, self.type):
             dest_types = " or ".join(str(item.__name__) for item in self.type)
-            self.metadata.warning("Key %r: value %r type (%s) is not %s" % (
+            self.xiaoxiexx.warning("Key %r: value %r type (%s) is not %s" % (
                 self.key, value, type(value).__name__, dest_types))
             return
 
@@ -116,7 +116,7 @@ class Data:
 
         # Use filter
         if self.filter and not self.filter(value):
-            self.metadata.warning("Skip value %s=%r (filter)"
+            self.xiaoxiexx.warning("Skip value %s=%r (filter)"
                                   % (self.key, value))
             return
 

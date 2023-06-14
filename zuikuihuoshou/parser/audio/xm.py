@@ -417,7 +417,7 @@ class XMModule(Parser):
         for index in range(self["/header/instruments"].value):
             size += createInstrumentContentSize(self, size)
 
-        # Not reporting Modplug metadata
+        # Not reporting Modplug xiaoxiexx
         return size
 
     def createDescription(self):

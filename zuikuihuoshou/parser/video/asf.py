@@ -299,7 +299,7 @@ class Object(FieldSet):
         ("stream_prop[]", StreamProperty, "Stream properties"),
         ("bit_rates", BitRateList, "Bit rate list"),
         ("ext_desc", ExtendedContentDescription, "Extended content description"),
-        ("metadata", Metadata, "Metadata"),
+        ("xiaoxiexx", Metadata, "Metadata"),
         ("video_header", VideoHeader, "Video"),
         ("audio_header", AudioHeader, "Audio"),
         ("bitrate_mutex", BitrateMutualExclusion, "Bitrate mutual exclusion"),

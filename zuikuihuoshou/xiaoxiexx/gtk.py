@@ -4,7 +4,7 @@ import os
 from gi.repository import Gtk
 
 from zuikuihuoshou.parser import createParser
-from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
 
 
 class MetadataGtk:
@@ -25,10 +25,10 @@ class MetadataGtk:
         self.select_hbox.pack_start(self.file_combo, True, True, 0)
         self.main_vbox.pack_start(self.select_hbox, False, True, 0)
 
-        self.metadata_table = Gtk.Table(1, 1)
-        self.metadata_table.attach(
-            Gtk.Label("Select a file to view metadata information..."), 0, 1, 0, 1)
-        self.main_vbox.pack_start(self.metadata_table, True, True, 0)
+        self.xiaoxiexx_table = Gtk.Table(1, 1)
+        self.xiaoxiexx_table.attach(
+            Gtk.Label("Select a file to view xiaoxiexx information..."), 0, 1, 0, 1)
+        self.main_vbox.pack_start(self.xiaoxiexx_table, True, True, 0)
 
         self.main_window.add(self.main_vbox)
         self.main_window.show_all()
@@ -51,33 +51,33 @@ class MetadataGtk:
         file_chooser.destroy()
 
     def _file_combo_changed(self, widget):
-        self.main_vbox.remove(self.metadata_table)
+        self.main_vbox.remove(self.xiaoxiexx_table)
 
         filename = self.file_combo.get_active_text()
         parser = createParser(filename)
-        metadata = extractMetadata(parser)
+        xiaoxiexx = tiquxinxi(parser)
 
-        self.metadata_table = Gtk.Table(1, 2)
-        self.main_vbox.pack_start(self.metadata_table, True, True, 0)
+        self.xiaoxiexx_table = Gtk.Table(1, 2)
+        self.main_vbox.pack_start(self.xiaoxiexx_table, True, True, 0)
 
-        if metadata is None:
-            self.metadata_table.attach(
+        if xiaoxiexx is None:
+            self.xiaoxiexx_table.attach(
                 Gtk.Label("Unknown file format"), 0, 1, 0, 1)
         else:
             total = 1
-            for data in sorted(metadata):
+            for data in sorted(xiaoxiexx):
                 if not data.values:
                     continue
                 title = data.description
                 for item in data.values:
-                    self.metadata_table.resize(total, 2)
+                    self.xiaoxiexx_table.resize(total, 2)
                     value = item.text
-                    self.metadata_table.attach(
+                    self.xiaoxiexx_table.attach(
                         Gtk.Label(title + ":"), 0, 1, total - 1, total)
-                    self.metadata_table.attach(
+                    self.xiaoxiexx_table.attach(
                         Gtk.Label(value), 1, 2, total - 1, total)
                     total += 1
-        self.metadata_table.show_all()
+        self.xiaoxiexx_table.show_all()
 
     def _destroy(self, widget, data=None):
         Gtk.main_quit()

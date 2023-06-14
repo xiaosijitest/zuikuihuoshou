@@ -26,7 +26,7 @@
 ENTRY_POINTS = {
     'console_scripts': [
         "zuikuihuoshou-grep = zuikuihuoshou.grep:main",
-        "zuikuihuoshou-metadata = zuikuihuoshou.metadata.main:main",
+        "zuikuihuoshou-xiaoxiexx = zuikuihuoshou.xiaoxiexx.main:main",
         "zuikuihuoshou-strip = zuikuihuoshou.strip:main",
         "zuikuihuoshou-urwid = zuikuihuoshou.urwid:main"
     ],

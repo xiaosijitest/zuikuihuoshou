@@ -25,7 +25,7 @@ Contributors
 * Christophe Gisquet <christophe.gisquet AT free.fr> - Write RAR parser
 * Kirill Zorin <cyril.zorin AT gmail.com> - Author of zuikuihuoshou-wx, 3DO and game parsers
 * Elie Roudninski aka adema <liliroud AT hotmail.com> - Started Gtk GUI
-* Feth Arezki <feth AT arezki.net> - Fix zuikuihuoshou-metadata-qt to save the current directory
+* Feth Arezki <feth AT arezki.net> - Fix zuikuihuoshou-xiaoxiexx-qt to save the current directory
 * Frédéric Weisbecker <chantecode AT gmail.com> - Author of ReiserFS parser
 * Gottfried Ganßauge <ganssauge AT gmx DOT de> - Fix Win32 curses issues
 * Jason Gorski <jgorski AT gmail.com> - Author of zsnes parser

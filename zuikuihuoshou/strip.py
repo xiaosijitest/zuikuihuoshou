@@ -1,5 +1,5 @@
 """
-Binary striper: remove metadata, producer information, useless padding, etc.
+Binary striper: remove xiaoxiexx, producer information, useless padding, etc.
 from binary files.
 
 Author: Victor Stinner
@@ -239,10 +239,10 @@ def parseOptions():
     common = OptionGroup(parser, "Hachoir strip")
     common.add_option("--strip",
                       help="Data types to remove: "
-                           "useless, metadata, index (default: all). "
+                           "useless, xiaoxiexx, index (default: all). "
                            "Use comma to specify two or more.",
                       type="str", action="store",
-                      default="metadata, useless, index")
+                      default="xiaoxiexx, useless, index")
     common.add_option("--quiet", help="Be quiet",
                       action="store_true", default=False)
     common.add_option("--version", help="Display version and exit",
@@ -264,7 +264,7 @@ def main():
         item = item.strip()
         if item == "useless":
             level |= STRIP_USELESS
-        elif item == "metadata":
+        elif item == "xiaoxiexx":
             level |= STRIP_METADATA
         elif item == "index":
             level |= STRIP_INDEX

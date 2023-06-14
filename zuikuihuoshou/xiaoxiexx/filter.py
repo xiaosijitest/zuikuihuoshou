@@ -1,4 +1,4 @@
-from zuikuihuoshou.metadata.timezone import UTC
+from zuikuihuoshou.xiaoxiexx.timezone import UTC
 from datetime import date, datetime
 
 # Year in 1850..2030

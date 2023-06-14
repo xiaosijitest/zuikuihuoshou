@@ -14,11 +14,11 @@ tubes; Hachoir is used by computer butchers to divide binary files into fields.
 
 Command line tools using Hachoir parsers:
 
-* :ref:`zuikuihuoshou-metadata <metadata>`: get metadata from binary files
+* :ref:`zuikuihuoshou-xiaoxiexx <xiaoxiexx>`: get xiaoxiexx from binary files
 * :ref:`zuikuihuoshou-urwid <urwid>`: display the content of a binary file in text mode
 * :ref:`zuikuihuoshou-wx <wx>`: display the content of a binary file in GUI mode
 * :ref:`zuikuihuoshou-grep <grep>`: find a text pattern in a binary file
-* :ref:`zuikuihuoshou-strip <strip>`: modify a file to remove metadata
+* :ref:`zuikuihuoshou-strip <strip>`: modify a file to remove xiaoxiexx
 
 .. image:: images/urwid.png
    :alt: zuikuihuoshou-urwid screenshot (MP3 audio file)
@@ -31,7 +31,7 @@ User Guide
    :maxdepth: 1
 
    install
-   metadata
+   xiaoxiexx
    urwid
    wx
    subfile

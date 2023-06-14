@@ -1,6 +1,6 @@
-from zuikuihuoshou.metadata.metadata import RootMetadata, registerExtractor
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import RootMetadata, registerExtractor
 from zuikuihuoshou.parser.program import ExeFile
-from zuikuihuoshou.metadata.safe import fault_tolerant, getValue
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant, getValue
 
 
 class ExeMetadata(RootMetadata):

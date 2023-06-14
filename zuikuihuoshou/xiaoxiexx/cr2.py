@@ -1,13 +1,13 @@
 """
-Canon CR2 raw image data, version 2.0 image metadata extractor.
+Canon CR2 raw image data, version 2.0 image xiaoxiexx extractor.
 
 Authors: Fernando Crespo
 Creation date: 21 february 2017
 """
 
-from zuikuihuoshou.metadata.metadata import (registerExtractor, RootMetadata)
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import (registerExtractor, RootMetadata)
 from zuikuihuoshou.parser.image import CR2File
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 
 
 class CR2Metadata(RootMetadata):

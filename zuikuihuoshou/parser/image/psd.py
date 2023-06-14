@@ -9,7 +9,7 @@ from zuikuihuoshou.parser import Parser
 from zuikuihuoshou.field import (FieldSet,
                            UInt16, UInt32, String, NullBytes, Enum, RawBytes)
 from zuikuihuoshou.core.endian import BIG_ENDIAN
-from zuikuihuoshou.parser.image.photoshop_metadata import Photoshop8BIM
+from zuikuihuoshou.parser.image.photoshop_xiaoxiexx import Photoshop8BIM
 
 
 class Config(FieldSet):

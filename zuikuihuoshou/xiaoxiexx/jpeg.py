@@ -1,5 +1,5 @@
-from zuikuihuoshou.metadata.metadata import RootMetadata, registerExtractor
-from zuikuihuoshou.metadata.image import computeComprRate
+from zuikuihuoshou.xiaoxiexx.xiaoxiexx import RootMetadata, registerExtractor
+from zuikuihuoshou.xiaoxiexx.image import computeComprRate
 from zuikuihuoshou.parser.image.exif import IFD, BasicIFDEntry
 from zuikuihuoshou.parser.image.jpeg import (
     JpegFile, JpegChunk,
@@ -7,7 +7,7 @@ from zuikuihuoshou.parser.image.jpeg import (
     QUALITY_HASH_GRAY, QUALITY_SUM_GRAY)
 from zuikuihuoshou.field import MissingField
 from zuikuihuoshou.core.tools import makeUnicode
-from zuikuihuoshou.metadata.safe import fault_tolerant
+from zuikuihuoshou.xiaoxiexx.safe import fault_tolerant
 from datetime import datetime
 
 
@@ -17,7 +17,7 @@ def deg2float(degree, minute, second):
 
 class JpegMetadata(RootMetadata):
     EXIF_KEY = {
-        # Exif metadatas
+        # Exif xiaoxiexxs
         "Make": "camera_manufacturer",
         "Model": "camera_model",
         "Orientation": "image_orientation",
@@ -39,7 +39,7 @@ class JpegMetadata(RootMetadata):
         "FocalPlaneYResolution": "focal_plane_y_resolution",
         "FocalLengthIn35mmFilm": "focal_length_in_35mm_film",
 
-        # Generic metadatas
+        # Generic xiaoxiexxs
         "ImageDescription": "title",
         "Software": "producer",
         "DateTime": "creation_date",
